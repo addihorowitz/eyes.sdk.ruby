@@ -31,7 +31,7 @@ def run_test
       visit 'https://astappev.github.io/test-html-pages/'
       eyes.check_window 'Whole page'
       eyes.check_region :id, 'overflowing-div', tag: 'Overflowed region', stitch_content: true
-      eyes.check_frame(options: { name_or_id: 'frame1' })
+      eyes.check_frame name_or_id: 'frame1'
       eyes.check_region_in_frame name_or_id: 'frame1', by: [:id, 'inner-frame-div'],
         tag: 'Inner frame div', stitch_content: true
       eyes.check_region :id, 'overflowing-div-image', tag: 'minions', stitch_content: true
