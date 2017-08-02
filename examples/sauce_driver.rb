@@ -12,8 +12,13 @@ module SauceDriver
       }
     end
 
+    def update_caps(new_caps)
+      caps = new_caps
+    end
+
     def new_driver
       Selenium::WebDriver.for :remote, url: sauce_endpoint, desired_capabilities: caps
     end
+
   end
 end
