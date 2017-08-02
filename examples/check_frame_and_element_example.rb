@@ -7,7 +7,7 @@ require 'applitools/capybara'
 require 'openssl'
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-def run_test()
+def run_test
   Applitools.register_capybara_driver(
     :browser => :remote,
     :url => SauceDriver.sauce_endpoint,
@@ -31,7 +31,7 @@ def run_test()
       visit 'https://astappev.github.io/test-html-pages/'
       eyes.check_window 'Whole page'
       eyes.check_region :id, 'overflowing-div', tag: 'Overflowed region', stitch_content: true
-      eyes.check_frame name_or_id: 'frame1'
+      eyes.check_frame(name_or_id: 'frame1')
       eyes.check_region_in_frame name_or_id: 'frame1', by: [:id, 'inner-frame-div'],
         tag: 'Inner frame div', stitch_content: true
       eyes.check_region :id, 'overflowing-div-image', tag: 'minions', stitch_content: true
@@ -40,22 +40,21 @@ def run_test()
   end
 end
 
-platforms = ["Windows 10", "Linux", "macOS 10.12"]
-browsers = ["chrome", "firefox"]
-for platform in platforms do
-  for browser in browsers do
+platforms = ['Windows 10', 'Linux', 'macOS 10.12']
+browsers = %w(chrome firefox)
+platforms.each do |platform|
+  browsers.each do |browser|
     caps = {
-             :platform => platform,
-             :browserName => browser
-           }
+      platform: platform,
+      browserName: browser
+    }
     SauceDriver.update_caps caps
-    run_test()
+    run_test
   end
 end
 caps = {
-         :platform => "Windows 10",
-         :browserName => "internet explorer"
-       }
+  platform:  'Windows 10',
+  browserName:  'internet explorer'
+}
 SauceDriver.update_caps caps
-run_test()
-
+run_test
