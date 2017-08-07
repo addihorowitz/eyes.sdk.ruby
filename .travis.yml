@@ -11,14 +11,15 @@ matrix:
           before_install:
           - rvm reinstall ruby-head --binary
           - gem install public_suffix -v '2.0.5'
-          - cd ruby; bundle install 
-          - cd sdk/ext/eyes_core;ruby extconf.rb;make;make install
+          - cd bundle install 
+          - cd ext/eyes_core;ruby extconf.rb;make;make install
           script:
           - cd ../.. 
           - bundle install --quiet 
           - bundle exec rake rubocop
           - cd examples
           - bundle exec rspec check_frame_and_element_example.rb
+          - bundle exec rspec check_frame_and_element_fluent_interface_example.rb
         - os : linux 
           language: ruby
           sudo: required
@@ -30,7 +31,7 @@ matrix:
           - gem install public_suffix -v '2.0.5'
           - cd ruby
           - bundle install 
-          - cd sdk/ext/eyes_core;ruby extconf.rb;make;make install
+          - cd ext/eyes_core;ruby extconf.rb;make;make install
           script:
           - cd ../..
           - bundle install --quiet
