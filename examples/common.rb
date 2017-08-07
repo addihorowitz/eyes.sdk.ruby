@@ -38,5 +38,5 @@ def run_tests(test)
   exception_arr.each do |exception|
     puts exception.backtrace
   end
-  raise
+  #raise
 end
