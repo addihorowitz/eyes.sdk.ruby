@@ -3,6 +3,7 @@ require 'capybara/rspec'
 require_relative './sauce_driver'
 require_relative '../lib/eyes_selenium'
 require 'applitools/capybara'
+require_relative './sauce_driver'
 
 Applitools.register_capybara_driver(
   :browser => :remote,

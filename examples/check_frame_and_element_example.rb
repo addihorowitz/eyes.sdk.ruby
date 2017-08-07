@@ -4,6 +4,8 @@ require_relative '../lib/eyes_selenium'
 require 'applitools/capybara'
 require './common'
 require 'openssl'
+require_relative './sauce_driver'
+
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 def run_test
