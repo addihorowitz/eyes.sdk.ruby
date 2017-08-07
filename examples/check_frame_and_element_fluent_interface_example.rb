@@ -33,7 +33,8 @@ def run_test
       eyes.check('Whole page', target)
       target = Applitools::Selenium::Target.region(eyes.driver.find_element(:id, 'overflowing-div')).fully
       eyes.check 'Overflowed region', target
-      target = Applitools::Selenium::Target.window.frame('frame1').fully.floating(:id, 'inner-frame-div', 10, 10, 10, 10)
+      target =
+        Applitools::Selenium::Target.window.frame('frame1').fully.floating(:id, 'inner-frame-div', 10, 10, 10, 10)
       eyes.check('', target)
       target = target.region(:id, 'inner-frame-div').fully.match_level(:exact) # Region in frame..
       eyes.check('Inner frame div', target)
