@@ -23,6 +23,8 @@ matrix:
           - bundle exec rspec images_example_fluent_interface_script.rb
           - bundle exec rspec images_example_script.rb
           - bundle exec rspec images_single_example_fi_script.rb
+          - bundle exec rspec capybara_example.rb
+          - bundle exec rspec watir_test_script.rb
         - os : linux 
           language: ruby
           sudo: required
@@ -44,5 +46,5 @@ matrix:
           - bundle exec rspec images_example_fluent_interface_script.rb
           - bundle exec rspec images_example_script.rb
           - bundle exec rspec images_single_example_fi_script.rb
-          #- bundle exec rspec capybara_example.rb
-          #- bundle exec rspec watir_test_script.rb
+          - bundle exec rspec capybara_example.rb
+          - bundle exec rspec watir_test_script.rb

@@ -3,7 +3,7 @@ require 'capybara/rspec'
 require_relative '../lib/eyes_selenium'
 require 'applitools/capybara'
 require_relative './sauce_driver'
-
+require './common'
 require 'openssl'
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
