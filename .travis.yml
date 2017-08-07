@@ -29,7 +29,6 @@ matrix:
           before_install:
           - rvm install ruby-head --binary
           - gem install public_suffix -v '2.0.5'
-          - cd ruby
           - bundle install 
           - cd ext/eyes_core;ruby extconf.rb;make;make install
           script:
