@@ -49,6 +49,7 @@ platforms.each do |platform|
       browserName: browser
     }
     SauceDriver.update_caps caps
+    # todo: add try catch (include all)
     run_test
   end
 end

@@ -1,17 +1,45 @@
-language: ruby
-rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.6
-  - 2.3.1
-  - rbx-2
+language: 
+- ruby
 matrix:
-  allow_failures:
-    - rvm: rbx-2
-# Use the faster container based infrastructure.
-sudo: false
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-script:
-  - bundle exec rake rubocop
+    include:
+        - os : linux 
+          language: ruby
+          rvm: 2.3.4
+          sudo: required
+          env: DISPLAY=':0.0'  
+          dist: trusty
+          before_install:
+          - rvm reinstall ruby-head --binary
+          - gem install public_suffix -v '2.0.5'
+          - cd ruby; bundle install 
+          - cd sdk/ext/eyes_core;ruby extconf.rb;make;make install
+          script:
+          - cd ../.. 
+          - bundle install --quiet 
+          - bundle exec rake rubocop
+          - cd examples
+          - bundle exec rspec check_frame_and_element_example.rb
+        - os : linux 
+          language: ruby
+          sudo: required
+          env: DISPLAY=':0.0'
+          dist: trusty
+          rvm: ruby-1.9.3-p551
+          before_install:
+          - rvm install ruby-head --binary
+          - gem install public_suffix -v '2.0.5'
+          - cd ruby
+          - bundle install 
+          - cd sdk/ext/eyes_core;ruby extconf.rb;make;make install
+          script:
+          - cd ../..
+          - bundle install --quiet
+          - bundle exec rake rubocop
+          - cd examples
+          - bundle exec rspec check_frame_and_element_example.rb
+          #- bundle exec rspec check_frame_and_element_fluent_interface_example.rb
+          #- bundle exec rspec images_example_fluent_interface_script.rb
+          #- bundle exec rspec images_example_script.rb
+          #- bundle exec rspec images_single_example_fi_script.rb
+          #- bundle exec rspec capybara_example.rb
+          #- bundle exec rspec watir_test_script.rb
