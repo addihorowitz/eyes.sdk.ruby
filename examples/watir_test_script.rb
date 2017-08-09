@@ -12,7 +12,7 @@ def run_test
   eyes.api_key = ENV['APPLITOOLS_API_KEY']
   eyes.log_handler = Logger.new(STDOUT)
 
-  browser = Watir::Browser.new(:remote, :url => SauceDriver.sauce_endpoint, :desired_capabilities => SauceDriver.caps)
+  browser = Watir::Browser.new(:remote, url: SauceDriver.sauce_endpoint, desired_capabilities: SauceDriver.caps)
 
   begin
     eyes.test(app_name: 'Ruby SDK', test_name: 'Applitools watir website test', viewport_size: { width: 900, height: 600 },
