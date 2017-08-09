@@ -15,7 +15,7 @@ def run_test
   browser = Watir::Browser.new(:remote, url: SauceDriver.sauce_endpoint, desired_capabilities: SauceDriver.caps)
 
   begin
-    eyes.test(app_name: 'Ruby SDK', test_name: 'Applitools watir website test', viewport_size: { width: 900, height: 600 },
+    eyes.test(app_name: 'Ruby SDK', test_name: 'Applitools watir test', viewport_size: { width: 900, height: 600 },
       driver: browser.driver) do |driver|
       driver.get 'http://www.applitools.com'
       eyes.check_window('initial')
