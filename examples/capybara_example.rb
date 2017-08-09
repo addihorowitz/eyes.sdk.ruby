@@ -56,7 +56,7 @@ def run_test
       # and so on
     end
 
-    #it 'other chrome test' do
+    # it 'other chrome test' do
     #  ##
     #  # this uses :selenium_chrome driver (see Capybara.register_driver block) instead of :eyes driver
     #  Capybara.using_driver :selenium_chrome do
@@ -64,14 +64,14 @@ def run_test
     #    fill_in(id: 'user[login]', with: 'user')
     #    # and so on
     #  end
-    #end
+    # end
 
     after :each do
       eyes.abort_if_not_closed
     end
   end
 
-  #describe 'Other Capybara tests', :type => :feature, :js => true do
+  # describe 'Other Capybara tests', :type => :feature, :js => true do
   #  it 'some other chrome test' do
   #    Capybara.using_driver :selenium_chrome do
   #      visit 'http://github.com'
@@ -79,7 +79,7 @@ def run_test
   #      # and so on
   #    end
   #  end
-  #end
+  # end
 end
 
 run_tests(run_test)

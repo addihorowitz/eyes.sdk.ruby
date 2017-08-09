@@ -14,8 +14,8 @@ def run_tests(test)
       SauceDriver.update_caps caps
 
       begin
-        run_test
-      rescue => e
+        test
+      rescue TypeError, NameError, Applitools::TestFailedError => e
         exception_arr[exception_arr_index] = e
         exception_arr_index += 1
       end
@@ -30,7 +30,7 @@ def run_tests(test)
 
   begin
     test
-  rescue => e
+  rescue TypeError, NameError, Applitools::TestFailedError => e
     exception_arr[exception_arr_index] = e
   end
 
