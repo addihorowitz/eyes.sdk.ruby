@@ -8,7 +8,7 @@ require_relative './sauce_driver'
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-def run_test
+run_test = proc do |dist, *args|
   Applitools.register_capybara_driver(
     :browser => :remote,
     :url => SauceDriver.sauce_endpoint,

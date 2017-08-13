@@ -15,7 +15,7 @@ def run_tests(test)
 
       begin
         puts "Running test on " + platform + " and " + browser
-        test.call()
+        test.call
       rescue TypeError, NameError, Applitools::TestFailedError => e
         exception_arr[exception_arr_index] = e
         exception_arr_index += 1
@@ -31,7 +31,7 @@ def run_tests(test)
 
   begin
     puts "Running test on Windows 10 and IE"
-    test.call()
+    test.call
   rescue TypeError, NameError, Applitools::TestFailedError => e
     exception_arr[exception_arr_index] = e
   end

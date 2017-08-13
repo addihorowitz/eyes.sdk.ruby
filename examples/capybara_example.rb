@@ -18,7 +18,7 @@ require_relative './sauce_driver'
 # The page.driver.browser method will contain Selenium::Webdriver
 # instance (without applitools wrapper), after eyes have closed
 #
-def run_test
+run_test = proc do |dist, *args|
   Applitools.register_capybara_driver(
     :browser => :remote,
     :url => SauceDriver.sauce_endpoint,
