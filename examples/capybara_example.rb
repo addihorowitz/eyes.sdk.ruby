@@ -19,7 +19,6 @@ require_relative './sauce_driver'
 # instance (without applitools wrapper), after eyes have closed
 #
 def run_test
-
   Applitools.register_capybara_driver(
     :browser => :remote,
     :url => SauceDriver.sauce_endpoint,
