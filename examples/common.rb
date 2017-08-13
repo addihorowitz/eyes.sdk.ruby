@@ -14,7 +14,6 @@ def run_tests(test)
       SauceDriver.caps =  caps
 
       begin
-        puts "Running test on " + platform + " and " + browser
         test.call
       rescue TypeError, NameError, Applitools::TestFailedError => e
         exception_arr[exception_arr_index] = e
@@ -38,7 +37,7 @@ def run_tests(test)
 
   return unless !exception_arr.empty?
   exception_arr.each do |exception|
-    puts exception.backtrace
+    puts exception.message + " " + exception.backtrace
   end
   # raise
 end
