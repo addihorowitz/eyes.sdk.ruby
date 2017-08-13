@@ -37,7 +37,8 @@ def run_tests(test)
 
   return unless !exception_arr.empty?
   exception_arr.each do |exception|
-    puts exception.message + " " + exception.backtrace
+    puts exception.message
+    puts exception.backtrace
   end
   # raise
 end
