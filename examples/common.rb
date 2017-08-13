@@ -4,17 +4,18 @@ def run_tests(test)
   exception_arr = []
   exception_arr_index = 0
   platforms = ['Windows 10', 'Linux', 'macOS 10.12']
-  browsers = %w(chrome firefox)
+  browsers = ['chrome', 'firefox']
   platforms.each do |platform|
     browsers.each do |browser|
       caps = {
         platform: platform,
         browserName: browser
       }
-      SauceDriver.update_caps caps
+      SauceDriver.caps =  caps
 
       begin
-        test
+        puts "Running test on " + platform + " and " + browser
+        test.call()
       rescue TypeError, NameError, Applitools::TestFailedError => e
         exception_arr[exception_arr_index] = e
         exception_arr_index += 1
@@ -26,15 +27,16 @@ def run_tests(test)
     platform:  'Windows 10',
     browserName:  'internet explorer'
   }
-  SauceDriver.update_caps caps
+  SauceDriver.caps = caps
 
   begin
-    test
+    puts "Running test on Windows 10 and IE"
+    test.call()
   rescue TypeError, NameError, Applitools::TestFailedError => e
     exception_arr[exception_arr_index] = e
   end
 
-  return unless exception_arr.empty?
+  return unless !exception_arr.empty?
   exception_arr.each do |exception|
     puts exception.backtrace
   end

@@ -1,20 +1,22 @@
 module SauceDriver
   class << self
+    @@caps =
+      {
+        platform: 'Mac OS X 10.10',
+        browserName: 'Chrome'
+      }
+
     def sauce_endpoint
       "https://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:443/wd/hub"
     end
 
     def caps
-      {
-        platform: 'Mac OS X 10.10',
-        browserName: 'Chrome',
-        version: '39.0'
-      }
+      @@caps
     end
 
-    def update_caps(new_caps)
-      caps['browser'] = new_caps['browser']
-      caps['platform'] = new_caps['platform']
+    def caps=new_caps
+      @@caps[:browserName] = new_caps[:browserName]
+      @@caps[:platform] = new_caps[:platform]
     end
 
     def new_driver
